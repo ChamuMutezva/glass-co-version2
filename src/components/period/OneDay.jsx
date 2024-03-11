@@ -12,10 +12,20 @@ function createData(name, quantity, measure, percentage) {
 
 const rows = [
     createData("Toughened", 37.9, "kg", 270.12),
-    createData("Broken", 104, "Kg", 0, "%"),
+    createData("Broken", 104, "Kg", 0),
     createData("Available", 258.27, "Kg", Infinity),
     createData("Idle", 205.38, "min", 207.69),
 ];
+
+function selectArrows(value) {
+    if (value < 0) {
+        return <img src="./icon-down.svg" alt="" />;
+    } else if (value === 0) {
+        return <span>-</span>;
+    } else {
+        return <img src="./icon-up.svg" alt="" />;
+    }
+}
 
 export default function OneDay() {
     return (
@@ -23,7 +33,14 @@ export default function OneDay() {
             <Table sx={{ minWidth: 250 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="left">Day</TableCell>
+                        <TableCell
+                            align="left"
+                            sx={{
+                                fontWeight: 800,
+                            }}
+                        >
+                            Day
+                        </TableCell>
                         <TableCell />
                         <TableCell />
                         <TableCell />
@@ -44,8 +61,17 @@ export default function OneDay() {
                             </TableCell>
                             <TableCell align="right">{row.quantity}</TableCell>
                             <TableCell align="right">{row.measure}</TableCell>
-                            <TableCell align="right">
-                                {row.percentage}%
+                            <TableCell
+                                align="right"
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    flexDirection: "row",
+                                }}
+                            >
+                                {selectArrows(row.percentage)}
+                                <span>{row.percentage}%</span>
                             </TableCell>
                         </TableRow>
                     ))}

@@ -17,13 +17,30 @@ const rows = [
     createData("Idle", 4055.83, "min", 0),
 ];
 
+function selectArrows(value) {
+    if (value < 0) {
+        return <img src="./icon-down.svg" alt="" />;
+    } else if (value === 0) {
+        return <span>-</span>;
+    } else {
+        return <img src="./icon-up.svg" alt="" />;
+    }
+}
+
 export default function Month() {
     return (
         <TableContainer component={Paper} elevation={6}>
             <Table sx={{ minWidth: 250 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="left">Month</TableCell>
+                        <TableCell
+                            align="left"
+                            sx={{
+                                fontWeight: 800,
+                            }}
+                        >
+                            Month
+                        </TableCell>
                         <TableCell />
                         <TableCell />
                         <TableCell />
@@ -44,7 +61,16 @@ export default function Month() {
                             </TableCell>
                             <TableCell align="right">{row.quantity}</TableCell>
                             <TableCell align="right">{row.measure}</TableCell>
-                            <TableCell align="right">
+                            <TableCell
+                                align="right"
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    flexDirection: "row",
+                                }}
+                            >
+                                {selectArrows(row.percentage)}
                                 {row.percentage}%
                             </TableCell>
                         </TableRow>

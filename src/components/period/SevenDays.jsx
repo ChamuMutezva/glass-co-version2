@@ -17,13 +17,30 @@ const rows = [
     createData("Idle", 1922.3, "min", -9.9),
 ];
 
+function selectArrows(value) {
+    if (value < 0) {
+        return <img src="./icon-down.svg" alt="" />;
+    } else if (value === 0) {
+        return <span>-</span>;
+    } else {
+        return <img src="./icon-up.svg" alt="" />;
+    }
+}
+
 export default function SevenDays() {
     return (
         <TableContainer component={Paper} elevation={6}>
             <Table sx={{ minWidth: 250 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
-                        <TableCell align="left">Week</TableCell>
+                        <TableCell
+                            align="left"
+                            sx={{
+                                fontWeight: 800,
+                            }}
+                        >
+                            Week
+                        </TableCell>
                         <TableCell />
                         <TableCell />
                         <TableCell />
@@ -45,7 +62,15 @@ export default function SevenDays() {
 
                             <TableCell align="right">{row.quantity}</TableCell>
                             <TableCell align="right">{row.measure}</TableCell>
-                            <TableCell align="right">
+                            <TableCell
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    flexDirection: "row",
+                                }}
+                            >
+                                {selectArrows(row.percentage)}
                                 {row.percentage}%
                             </TableCell>
                         </TableRow>

@@ -1,4 +1,4 @@
-import { Container ,Grid} from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { useState } from "react";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -14,8 +14,16 @@ function ProgressDetails() {
         setLocation(evt.target.value);
     };
     return (
-        <Container component={Grid}  gap={4}>
-            <FormControl fullWidth component={Grid} item>
+        <Container
+            component={Grid}
+            container
+            gap={4}
+            style={{
+                maxWidth: "100%",
+                padding: 0,
+            }}
+        >
+            <FormControl fullWidth component={Grid} item marginTop={"2rem"}>
                 <InputLabel id="location-label">Warehouse</InputLabel>
                 <Select
                     labelId="location-label"
@@ -23,16 +31,22 @@ function ProgressDetails() {
                     value={location}
                     label="Warehouse"
                     defaultValue="port-elizabeth"
-                    onChange={handleChange}
+                    onChange={handleChange}                   
                 >
-                    <MenuItem value={"johhanesburg"}>JB</MenuItem>
-                    <MenuItem value={"port-elizabeth"}>PE</MenuItem>
-                    <MenuItem value={"cape-town"}>CT</MenuItem>
+                    <MenuItem value={"johannesburg"}>Johannesburg</MenuItem>
+                    <MenuItem value={"port-elizabeth"}>Port Elizabeth</MenuItem>
+                    <MenuItem value={"cape-town"}>Cape Town</MenuItem>
+                    <MenuItem value={"george"}>George</MenuItem>
+                    <MenuItem value={"east-london"}>East London</MenuItem>
+                    <MenuItem value={"pretoria"}>Pretoria</MenuItem>
+                    <MenuItem value={"nelspruit"}>Nelspruit</MenuItem>
                 </Select>
             </FormControl>
-            <OneDay />
-            <SevenDays />
-            <Month />
+            <Grid container gap={4} marginTop={"2rem"}>
+                <OneDay />
+                <SevenDays />
+                <Month />
+            </Grid>
         </Container>
     );
 }

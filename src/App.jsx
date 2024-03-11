@@ -8,19 +8,23 @@ import ProgressDetails from "./components/ProgressDetails";
 function App() {
     return (
         <Container maxWidth={false}>
-            <header style={{backgroundColor: "black"}}>
-                <Typography variant="h1" sx={{color: "white"}}>Furnace Dashboard</Typography>
+            <header
+                style={{ backgroundColor: "black", marginBottom: "2.5rem" }}
+            >
+                <Typography variant="h1" sx={{ color: "white" }}>
+                    Furnace Dashboard
+                </Typography>
             </header>
             <main>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} lg={3}>
+                    <Grid item xs={12} lg={3} xl={3}>
                         <ProgressDetails />
                     </Grid>
-                    <Grid item xs={12} lg={5}>
+                    <Grid item xs={12} lg={5} xl={5}>
                         <StatusChart />
                         <WaitTimeChart />
                     </Grid>
-                    <Grid item xs={12} lg={4}>
+                    <Grid item xs={12} lg={4} xl={4}>
                         <BatchTable />
                     </Grid>
                 </Grid>
